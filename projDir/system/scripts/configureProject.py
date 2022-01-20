@@ -2,7 +2,7 @@
 
 # ========================================================================== #
 #
-# Configure the host for a given role
+# Configure the host for field catalog project
 #
 # ========================================================================== #
 
@@ -20,7 +20,7 @@ def main():
     homeDir = os.environ['HOME']
     projDir = os.path.join(homeDir, 'projDir')
     controlDir = os.path.join(projDir, 'control')
-    defaultGitDir = os.path.join(homeDir, "git/lrose-projects-relampago")
+    defaultGitDir = os.path.join(homeDir, "git/lrose-field-catalog")
 
     # parse the command line
 
@@ -37,9 +37,6 @@ def main():
     parser.add_option('--gitDir',
                       dest='gitDir', default=defaultGitDir,
                       help='Path of main directory in git')
-    parser.add_option('--dataDir',
-                      dest='dataDir', default='/data/relamp',
-                      help='Path of installed data dir')
     (options, args) = parser.parse_args()
     
     if (options.verbose):
@@ -64,47 +61,7 @@ def main():
         print >>sys.stderr, "    gitDir: ", options.gitDir
         print >>sys.stderr, "    gitProjDir: ", gitProjDir
         print >>sys.stderr, "    gitSystemDir: ", gitSystemDir
-
-    # read current host type if previously set
-
-    prevHostType = 'archiver'
-    hostTypePath = os.path.join(homeDir, '.host_type')
-    if (os.path.exists(hostTypePath)):
-        hostTypeFile = open(hostTypePath, 'r')
-        prevHostType = hostTypeFile.read()
-        prevHostType = prevHostType.strip(string.whitespace)
-    if (options.debug):
-        print >>sys.stderr, "    prevHostType: ", prevHostType
-
-    # get the host type interactively
-
-    hostTypes = [ 'server', 'display' ]
-
-    print ""
-    print "Choose host type from the following list"
-    print "       or hit enter to use host type shown:"
-    for hostType in hostTypes:
-        print "     ", hostType
-    hostType = raw_input('    ............. (' + prevHostType + ')? ')
-    if (len(hostType) < 4):
-        hostType = prevHostType
-    else:
-        typeIsValid = False
-        for htype in hostTypes:
-            if (hostType == htype):
-                typeIsValid = True
-        if (typeIsValid != True):
-            print >>sys.stderr, "ERROR - invalid host type: ", hostType
-            sys.exit(1)
-
-    gitProjDir = os.path.join(options.gitDir, "projDir")
-
-    # save the host type to ~/.host_type
-
-    hostTypeFile = open(hostTypePath, "w")
-    hostTypeFile.write(hostType + '\n')
-    hostTypeFile.close()
-
+        
     # banner
 
     print " "
@@ -113,8 +70,6 @@ def main():
     print "  configure project"
     print
     print "  runtime: " + str(datetime.datetime.now())
-    print
-    print "  host type: ", hostType
     print
     print "*********************************************************************"
     print " "
@@ -137,42 +92,6 @@ def main():
     cmd = "ln -s " + gitProjDir
     runCommand(cmd)
     
-    # make link to proc_list, crontab and data_list
-
-    os.chdir(controlDir)
-
-    removeSymlink(controlDir, "proc_list")
-    cmd = "ln -s proc_list." + hostType + " proc_list"
-    runCommand(cmd)
-
-    removeSymlink(controlDir, "crontab")
-    cmd = "ln -s crontab." + hostType + " crontab"
-    runCommand(cmd)
-
-    removeSymlink(controlDir, "data_list")
-    cmd = "ln -s data_list." + hostType + " data_list"
-    runCommand(cmd)
-    
-    ############################################
-    # data dir - specific to the host type
-    # populate installed data dir /data/spol
-    
-    dataDirsPath = os.path.join(options.gitDir, 'data_dirs')
-    dataSubDir = "data." + hostType
-    templateDataDir = os.path.join(dataDirsPath, dataSubDir)
-    installDataDir = os.path.join(options.dataDir, dataSubDir)
-
-    if (options.debug):
-        print >>sys.stderr, "Install data dir: ", installDataDir
-
-    # create symlink to data
-
-    os.chdir(projDir)
-    removeSymlink(projDir, "data")
-    if (os.path.exists('data') == False):
-        cmd = "ln -s " + installDataDir + " data"
-        runCommand(cmd)
-
     # create symlink to logs
 
     os.chdir(projDir)
@@ -181,22 +100,6 @@ def main():
         cmd = "ln -s data/logs"
         runCommand(cmd)
 
-    # rync template dir into data dir
-
-    os.chdir(templateDataDir)
-    cmd = "rsync -av * " + installDataDir
-    runCommand(cmd)
-
-    # create symlinks for parameter files
-    # from data tree back into the template
-
-    debugStr = ""
-    if (options.debug):
-        debugStr = " --debug"
-    cmd = "createParamLinks.py --templateDir " + \
-          templateDataDir + " --installDir " + installDataDir + debugStr
-    runCommand(cmd)
-    
     # done
 
     sys.exit(0)
