@@ -1,4 +1,4 @@
-#!/opt/local/anaconda2/bin/python
+#!/usr/bin/env python
 
 #=====================================================================
 #
@@ -6,6 +6,7 @@
 #
 #=====================================================================
 
+from __future__ import print_function
 import os
 import sys
 import time
@@ -40,9 +41,9 @@ def main():
     if (options.force):
         beginString += " (ftp forced)"
 
-    print "\n========================================================"
-    print beginString
-    print "========================================================="
+    print("=========================================================")
+    print(beginString)
+    print("=========================================================")
 
     # create tmp dir if necessary
 
@@ -50,8 +51,8 @@ def main():
         os.makedirs(options.tmpDir)
     except OSError as exc:
         if (options.verbose):
-            print >>sys.stderr, "WARNING: cannot make tmp dir: ", options.tmpDir
-            print >>sys.stderr, "  ", exc
+            print("WARNING: cannot make tmp dir: ", options.tmpDir, file=sys.stderr)
+            print("  ", exc, file=sys.stderr)
             
     # set ftp debug level
 
@@ -91,13 +92,13 @@ def main():
     # debug print
 
     if (options.debug):
-        print >>sys.stderr, "  time now: ", nowDateTimeStr
-        print >>sys.stderr, "  getting data after: ", startDateTimeStr
-        print >>sys.stderr, "  nDays: ", nDays
-        print >>sys.stderr, "  dateStrList: ", dateStrList
+        print("  time now: ", nowDateTimeStr, file=sys.stderr)
+        print("  getting data after: ", startDateTimeStr, file=sys.stderr)
+        print("  nDays: ", nDays, file=sys.stderr)
+        print("  dateStrList: ", dateStrList, file=sys.stderr)
 
     if (options.skipFtp):
-        print "skipping FTP of", options.sourceDir, " to", options.targetDir
+        print("skipping FTP of", options.sourceDir, " to", options.targetDir)
         sys.exit(0)
 
     # open ftp connection
@@ -122,8 +123,8 @@ def main():
             os.makedirs(localDayDir)
         except OSError as exc:
             if (options.verbose):
-                print >>sys.stderr, "WARNING: trying to create dir: ", localDayDir
-                print >>sys.stderr, "  ", exc
+                print("WARNING: trying to create dir: ", localDayDir, file=sys.stderr)
+                print("  ", exc, file=sys.stderr)
         os.chdir(localDayDir)
 
         # get local file list - i.e. those which have already been downloaded
@@ -131,14 +132,14 @@ def main():
         localFileList = os.listdir('.')
         localFileList.reverse()
         if (options.verbose):
-            print >>sys.stderr, "  localFileList: ", localFileList
+            print("  localFileList: ", localFileList, file=sys.stderr)
             
         # get ftp server file list, for day dir
         
         ftpFileList = ftp.nlst()
         ftpFileList.reverse()
         if (options.verbose):
-            print >>sys.stderr, "  ftpFileList: ", ftpFileList
+            print("  ftpFileList: ", ftpFileList, file=sys.stderr)
 
         # loop through the ftp file list, downloading those that have
         # not yet been downloaded and those for correct date and start
@@ -157,11 +158,11 @@ def main():
     ftp.quit()
 
     if (count == 0):
-        print "---->> No files to download"
+        print("---->> No files to download")
         
-    print "==============================================================="
-    print "END: " + thisScriptName + str(datetime.datetime.now())
-    print "==============================================================="
+    print("===============================================================")
+    print("END: " + thisScriptName + str(datetime.datetime.now()))
+    print("===============================================================")
 
     sys.exit(0)
 
@@ -171,14 +172,14 @@ def main():
 def downloadFile(ftp, dateStr, fileName):
     
     if (options.debug):
-        print >>sys.stderr, "  downloading file: ", fileName
+        print("  downloading file: ", fileName, file=sys.stderr)
         
     # get file, store in tmp
 
     tmpPath = os.path.join(options.tmpDir, fileName)
 
     if (options.verbose):
-        print >>sys.stderr, "retrieving file, storing as tmpPath: ", tmpPath
+        print("retrieving file, storing as tmpPath: ", tmpPath, file=sys.stderr)
     ftp.retrbinary('RETR '+ fileName, open(tmpPath, 'wb').write)
 
     # move to final location - i.e. this directory
@@ -261,15 +262,15 @@ def parseArgs():
         options.debug = True
 
     if (options.debug):
-        print >>sys.stderr, "Options:"
-        print >>sys.stderr, "  debug? ", options.debug
-        print >>sys.stderr, "  force? ", options.force
-        print >>sys.stderr, "  skipFtp? ", options.skipFtp
-        print >>sys.stderr, "  ftpServer: ", options.ftpServer
-        print >>sys.stderr, "  ftpUser: ", options.ftpUser
-        print >>sys.stderr, "  sourceDir: ", options.sourceDir
-        print >>sys.stderr, "  tmpDir: ", options.tmpDir
-        print >>sys.stderr, "  pastSecs: ", options.pastSecs
+        print("Options:", file=sys.stderr)
+        print("  debug? ", options.debug, file=sys.stderr)
+        print("  force? ", options.force, file=sys.stderr)
+        print("  skipFtp? ", options.skipFtp, file=sys.stderr)
+        print("  ftpServer: ", options.ftpServer, file=sys.stderr)
+        print("  ftpUser: ", options.ftpUser, file=sys.stderr)
+        print("  sourceDir: ", options.sourceDir, file=sys.stderr)
+        print("  tmpDir: ", options.tmpDir, file=sys.stderr)
+        print("  pastSecs: ", options.pastSecs, file=sys.stderr)
 
 ########################################################################
 # Run a command in a shell, wait for it to complete
@@ -277,17 +278,17 @@ def parseArgs():
 def runCommand(cmd):
 
     if (options.debug):
-        print >>sys.stderr, "running cmd:",cmd
+        print("running cmd:",cmd, file=sys.stderr)
     
     try:
         retcode = subprocess.call(cmd, shell=True)
         if retcode < 0:
-            print >>sys.stderr, "Child was terminated by signal: ", -retcode
+            print("Child was terminated by signal: ", -retcode, file=sys.stderr)
         else:
             if (options.debug):
-                print >>sys.stderr, "Child returned code: ", retcode
-    except OSError, e:
-        print >>sys.stderr, "Execution failed:", e
+                print("Child returned code: ", retcode, file=sys.stderr)
+    except OSError as e:
+        print("Execution failed:", e, file=sys.stderr)
 
 ########################################################################
 # kick off main method
