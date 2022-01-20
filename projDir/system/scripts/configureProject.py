@@ -95,11 +95,11 @@ def main():
     
     # create symlink to logs
 
-    os.chdir(projDir)
-    removeSymlink(projDir, "logs")
-    if (os.path.exists('logs') == False):
-        cmd = "ln -s data/logs"
-        runCommand(cmd)
+    #os.chdir(projDir)
+    #removeSymlink(projDir, "logs")
+    #if (os.path.exists('logs') == False):
+    #    cmd = "ln -s data/logs"
+    #    runCommand(cmd)
 
     # done
 
