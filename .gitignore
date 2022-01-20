@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# underscore files
+
+projDir/data/_ScoutLock
+projDir/data/_dmap_table
+
