@@ -47,11 +47,11 @@ def main():
 
     # set full paths for targetDir and tmpDir and sourceDir
 
-    options.sourceDir = '/' + options.radar + options.sourceDir
-    if (options.radar == 'cow1'):
-        options.radar = 'dowc'
     options.tmpDir = options.tmpDir + '/' + options.radar 
     options.targetDir = options.targetDir + '/' + options.radar 
+    if (options.radar == 'dowc'):
+        options.radar = 'cow1'
+    options.sourceDir = '/' + options.radar + options.sourceDir
 
     # create tmp dir if necessary
 
@@ -118,11 +118,18 @@ def main():
 
     ftp.cwd(options.sourceDir)
     ftpDateList = ftp.nlst()
+    ftpDates = [filename[6:14] for filename in ftpDateList]
 
     # loop through days
 
     count = 0
     for dateStr in dateStrList:
+
+        if (dateStr not in ftpDates):
+            if (options.verbose):
+                print("WARNING: ignoring date, does not exist on ftp site", file=sys.stderr)
+                print("  dateStr: ", dateStr, file=sys.stderr)
+            continue
 
         # make the target directory
 
@@ -155,6 +162,7 @@ def main():
 
         for ftpFileName in ftpFileList:
 
+            count = 0
             fileDate = ftpFileName[6:14]
 
             if (ftpFileName not in localFileList and ftpFileName[0:5] == 'cfrad' and fileDate == dateStr):
@@ -167,6 +175,7 @@ def main():
 
     if (count == 0):
         print("---->> No files to download")
+
         
     print("===============================================================")
     print("END: " + thisScriptName + str(datetime.datetime.now()))
