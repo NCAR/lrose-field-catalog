@@ -45,6 +45,12 @@ def main():
     print(beginString)
     print("=========================================================")
 
+    # set full paths for targetDir and tmpDir and sourceDir
+
+    options.tmpDir = options.tmpDir + '/' + options.radar 
+    options.targetDir = options.targetDir + '/' + options.radar 
+    options.sourceDir = '/' + options.radar + options.sourceDir
+
     # create tmp dir if necessary
 
     try:
@@ -81,7 +87,7 @@ def main():
 
     # set up list of days to be checked
 
-    nDays = (pastSecs / 86400) + 1
+    nDays = int((pastSecs / 86400) + 1)
     dateStrList = []
     for iDay in range(0, nDays):
         deltaSecs = timedelta(0, iDay * 86400)
@@ -189,7 +195,7 @@ def downloadFile(ftp, dateStr, fileName):
 
     # write latest_data_info
     
-    fileTimeStr = fileName[0:6]
+    fileTimeStr = fileName[15:21]
     fileDateTimeStr = dateStr + fileTimeStr
     
     relPath = os.path.join(dateStr, fileName)
@@ -241,20 +247,24 @@ def parseArgs():
                       help='Passwd for ftp host')
     parser.add_option('--sourceDir',
                       dest='sourceDir',
-                      default='/cow1/data',
+                      default='/data',
                       help='Path of source directory')
     parser.add_option('--targetDir',
                       dest='targetDir',
-                      default='/scr/tmp/costanza/WINTRE-MIX/final',
+                      default='/scr/snow1/rsfdata/projects/wintre_mix/cfradial',
                       help='Path of target directory')
     parser.add_option('--tmpDir',
                       dest='tmpDir',
-                      default='/scr/tmp/costanza/WINTRE-MIX/tmp',
+                      default='/scr/snow1/rsfdata/projects/wintre_mix/cfradial/incoming',
                       help='Path of tmp directory')
     parser.add_option('--pastSecs',
                       dest='pastSecs',
-                      default=172800,
+                      default=3600,
                       help='How far back to retrieve (secs)')
+    parser.add_option('--radar',
+                      dest='radar',
+                      default='dow6',
+                      help='Which radar dow6, dow7, cow1')
 
     (options, args) = parser.parse_args()
 
