@@ -8,6 +8,7 @@
 #
 #======================================================================
 
+from __future__ import print_function
 import os
 import sys
 import time
@@ -32,21 +33,21 @@ def main():
     # initialize
     
     appName = __file__
-    print "==========================================================="
-    print "BEGIN: " + appName + " at " + str(datetime.datetime.now())
-    print "==========================================================="
+    print("===========================================================")
+    print("BEGIN: " + appName + " at " + str(datetime.datetime.now()))
+    print("===========================================================")
 
     # Extract the radar latitutde/longitude from the volume
     
     radar_lat, radar_lon, fixed_angle = getRadarLatLon(fullFilePath);
     if (options.debug):
-        print '==>> radar lat, lon, fixed_angle: ', radar_lat, ', ', radar_lon, ", ", fixed_angle
+        print('==>> radar lat, lon, fixed_angle: ', radar_lat, ', ', radar_lon, ", ", fixed_angle)
 
     # Check the fixed anlgle.  We only process files between the sepcified fixed angles
     # to make sure we don't process the vertical scans
 
     if (fixed_angle < options.min_fixed_angle) or (fixed_angle > options.max_fixed_angle):
-        print '**** Skipping scan with fixed angle outside of the specified range'
+        print('**** Skipping scan with fixed angle outside of the specified range')
         return
 
     # Now get the radar x/y location assuming a Mercator projection with origin
@@ -54,7 +55,7 @@ def main():
 
     radar_x, radar_y = getRadarXY(radar_lat, radar_lon)
     if (options.debug):
-        print 'radar_x = ', radar_x, ', radar_y = ', radar_y
+        print('radar_x = ', radar_x, ', radar_y = ', radar_y)
 
     # Set the environment variables that will be used in the CIDD
     # parameter file
@@ -82,9 +83,9 @@ def main():
     cmd = 'run_CIDD.catalog.' + options.radar_name + ' ' + validTimeStr
     runCommand(cmd);
 
-    print "============================================================="
-    print "END: " + appName + " at " + str(datetime.datetime.now())
-    print "============================================================="
+    print("=============================================================")
+    print("END: " + appName + " at " + str(datetime.datetime.now()))
+    print("=============================================================")
 
     sys.exit(0)
 
@@ -182,18 +183,18 @@ def parseArgs():
         options.debug = True
 
     if (options.debug):
-        print >>sys.stderr, "Options:"
-        print >>sys.stderr, "  debug? ", options.debug
-        print >>sys.stderr, "  verbose? ", options.verbose
-        print >>sys.stderr, "  abs_dir_path: ", options.abs_dir_path
-        print >>sys.stderr, "  rel_data_path: ", options.rel_data_path
-        print >>sys.stderr, "  fullFilePath: ", fullFilePath
-        print >>sys.stderr, "  valid_time: ", options.valid_time
-        print >>sys.stderr, "  validTimeStr: ", validTimeStr
-        print >>sys.stderr, "  radar_name: ", options.radar_name
-        print >>sys.stderr, "  min_fixed_angle: ", options.min_fixed_angle
-        print >>sys.stderr, "  max_fixed_angle: ", options.max_fixed_angle
-        print >>sys.stderr, "  max_range_km: ", options.max_range_km
+        print("Options:", file=sys.stderr)
+        print("  debug? ", options.debug, file=sys.stderr)
+        print("  verbose? ", options.verbose, file=sys.stderr)
+        print("  abs_dir_path: ", options.abs_dir_path, file=sys.stderr)
+        print("  rel_data_path: ", options.rel_data_path, file=sys.stderr)
+        print("  fullFilePath: ", fullFilePath, file=sys.stderr)
+        print("  valid_time: ", options.valid_time, file=sys.stderr)
+        print("  validTimeStr: ", validTimeStr, file=sys.stderr)
+        print("  radar_name: ", options.radar_name, file=sys.stderr)
+        print("  min_fixed_angle: ", options.min_fixed_angle, file=sys.stderr)
+        print("  max_fixed_angle: ", options.max_fixed_angle, file=sys.stderr)
+        print("  max_range_km: ", options.max_range_km, file=sys.stderr)
 
 ########################################################################
 # Extract the radar location from the given cfradial file
@@ -257,17 +258,17 @@ def getRadarXY(radar_lat, radar_lon):
 def runCommand(cmd):
 
     if (options.debug):
-        print >>sys.stderr, "running cmd:",cmd
+        print("running cmd:",cmd, file=sys.stderr)
     
     try:
         retcode = subprocess.call(cmd, shell=True)
         if retcode < 0:
-            print >>sys.stderr, "Child was terminated by signal: ", -retcode
+            print("Child was terminated by signal: ", -retcode, file=sys.stderr)
         else:
             if (options.debug):
-                print >>sys.stderr, "Child returned code: ", retcode
-    except OSError, e:
-        print >>sys.stderr, "Execution failed:", e
+                print("Child returned code: ", retcode, file=sys.stderr)
+    except OSError as e:
+        print("Execution failed:", e, file=sys.stderr)
 
 ########################################################################
 # kick off main method
