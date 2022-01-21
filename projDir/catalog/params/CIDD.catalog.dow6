@@ -895,10 +895,10 @@ cidd.horiz_image_dir:   $(DATA_DIR)/images/cidd/dc3
 # The default file name until reset by the user - Appends other info automatically
 cidd.horiz_image_fname:   CH
 # Note that this is initially set to cidd.image_convert_script
-cidd.horiz_image_command:  convert_image.csh
+#cidd.horiz_image_command:  convert_image.csh
 #
 # Note that this is initially set to cidd.image_dir
-cidd.vert_image_dir:   $(DATA_DIR)/images/cidd/dc3/vert
+#cidd.vert_image_dir:   $(DATA_DIR)/images/cidd/dc3/vert
 # The default file name until reset by the user - Appends other info automatically
 cidd.vert_image_fname:    CV
 # Note that this is initially set to cidd.image_convert_script
