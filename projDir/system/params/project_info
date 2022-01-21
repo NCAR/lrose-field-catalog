@@ -5,7 +5,7 @@
 
 # PROJECT
 
-setenv PROJECT_NAME               "WINTRE_MIX"
-setenv project                    "wintre_mix"
-setenv catalog_name               "wintre_mix"
+setenv PROJECT_NAME               "WINTRE-MIX"
+setenv project                    "wintre-mix"
+setenv catalog_name               "wintre-mix"
 
