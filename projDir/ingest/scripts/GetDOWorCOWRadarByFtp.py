@@ -47,9 +47,11 @@ def main():
 
     # set full paths for targetDir and tmpDir and sourceDir
 
+    options.sourceDir = '/' + options.radar + options.sourceDir
+    if (options.radar == 'cow1'):
+        options.radar = 'dowc'
     options.tmpDir = options.tmpDir + '/' + options.radar 
     options.targetDir = options.targetDir + '/' + options.radar 
-    options.sourceDir = '/' + options.radar + options.sourceDir
 
     # create tmp dir if necessary
 
