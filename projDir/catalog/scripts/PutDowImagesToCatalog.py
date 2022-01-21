@@ -6,6 +6,7 @@
 #
 #===========================================================================
 
+from __future__ import print_function
 import os
 import sys
 from stat import *
@@ -31,9 +32,9 @@ def main():
     # initialize
     
     if (options.debug):
-        print >>sys.stderr, "======================================================="
-        print >>sys.stderr, "BEGIN: " + appName + " " + str(datetime.datetime.now())
-        print >>sys.stderr, "======================================================="
+        print("=======================================================", file=sys.stderr)
+        print("BEGIN: " + appName + " " + str(datetime.datetime.now()), file=sys.stderr)
+        print("=======================================================", file=sys.stderr)
 
     # create tmp dir if necessary
     
@@ -70,11 +71,11 @@ def main():
 
     file_tokens = options.fileName.split(".")
     if (options.debug):
-        print >>sys.stderr, "filename toks: "
-        print >>sys.stderr, file_tokens
+        print("filename toks: ", file=sys.stderr)
+        print(file_tokens, file=sys.stderr)
         
     if len(file_tokens) != 6:
-        print "*** Invalid file name: ", options.fileName
+        print("*** Invalid file name: ", options.fileName)
         sys.exit(0)
 
     # check for valid time
@@ -83,7 +84,7 @@ def main():
     yearStr = timeStr[0:4]
     year = int(yearStr)
     if (year < 2018):
-        print >>sys.stderr, "!!! ==>> Invalid time string: ", yearStr
+        print("!!! ==>> Invalid time string: ", yearStr, file=sys.stderr)
         sys.exit(0)
     dayStr = timeStr[0:8]
 
@@ -91,8 +92,8 @@ def main():
 
     inCat = file_tokens[0]
     if (inCat != 'radar'):
-        print >>sys.stderr, "!!! ==>> Bad incoming category: ", inCat
-        print >>sys.stderr, "         Should be 'radar'"
+        print("!!! ==>> Bad incoming category: ", inCat, file=sys.stderr)
+        print("         Should be 'radar'", file=sys.stderr)
         sys.exit(0)
 
     # field
@@ -113,7 +114,7 @@ def main():
                        extension)
 
     if (options.debug):
-        print >>sys.stderr, "catalogFileName: ", catalogFileName
+        print("catalogFileName: ", catalogFileName, file=sys.stderr)
 
     # put the image file
     
@@ -134,7 +135,7 @@ def main():
         kmlFilePath = os.path.join(options.tempDir, kmlCatalogName)
         
         if (options.debug):
-            print >>sys.stderr, "creating kml file: ", kmlFilePath
+            print("creating kml file: ", kmlFilePath, file=sys.stderr)
             
         createKmlFile(xmlFilePath, kmlFilePath,
                       options.catalogCategory, platform, yyyymmdd, hh, mm, catalogFieldName)
@@ -148,9 +149,9 @@ def main():
     # let the user know we are done
 
     if (options.debug):
-        print >>sys.stderr, "======================================================="
-        print >>sys.stderr, "END: " + appName + " " + str(datetime.datetime.now())
-        print >>sys.stderr, "======================================================="
+        print("=======================================================", file=sys.stderr)
+        print("END: " + appName + " " + str(datetime.datetime.now()), file=sys.stderr)
+        print("=======================================================", file=sys.stderr)
 
     sys.exit(0)
 
@@ -171,10 +172,10 @@ def createKmlFile(xmlPath, kmlPath, category, platform,
     east = lat_lon_box.find('east').text
 
     if (options.debug):
-        print 'north = ', north
-        print 'south = ', south
-        print 'east = ', east
-        print 'west = ', west
+        print('north = ', north)
+        print('south = ', south)
+        print('east = ', east)
+        print('west = ', west)
     
     # Construct the HREF for this file
     # this is the platform in lower case
@@ -187,12 +188,12 @@ def createKmlFile(xmlPath, kmlPath, category, platform,
            + '/radar.' + platform + '.' + yyyymmdd + hh + mm + '.' + catalogFieldName + '.png'
 
     if (options.debug):
-        print '  href: ', href
+        print('  href: ', href)
 
     # Create the KML file
 
     if (options.debug):
-        print 'Writing KML to file: ', kmlPath
+        print('Writing KML to file: ', kmlPath)
 
     kml_file = open(kmlPath, 'w')
 
@@ -230,10 +231,10 @@ def createKmlFile(xmlPath, kmlPath, category, platform,
 def ftpFile(incomingFilePath, catalogFileName):
     
     if (options.debug):
-        print >>sys.stderr, "==>> doing ftp <<=="
-        print >>sys.stderr, "  incomingFilePath: ", incomingFilePath
-        print >>sys.stderr, "  catalogFileName: " + catalogFileName
-        print >>sys.stderr, "  to ftpDir: " + options.ftpDir
+        print("==>> doing ftp <<==", file=sys.stderr)
+        print("  incomingFilePath: ", incomingFilePath, file=sys.stderr)
+        print("  catalogFileName: " + catalogFileName, file=sys.stderr)
+        print("  to ftpDir: " + options.ftpDir, file=sys.stderr)
 
     # set ftp debug level
 
@@ -250,7 +251,7 @@ def ftpFile(incomingFilePath, catalogFileName):
     # go to target dir
 
     if (options.debug):
-        print >>sys.stderr, "ftp cwd to: " + options.ftpDir
+        print("ftp cwd to: " + options.ftpDir, file=sys.stderr)
     
     ftp.cwd(options.ftpDir)
         
@@ -341,19 +342,19 @@ def parseArgs():
     (options, args) = parser.parse_args()
 
     if (options.debug):
-        print >>sys.stderr, "Options:"
-        print >>sys.stderr, "  debug? ", options.debug
-        print >>sys.stderr, "  unixTime: ", options.unixTime
-        print >>sys.stderr, "  fullPath: ", options.fullPath
-        print >>sys.stderr, "  fileName: ", options.fileName
-        print >>sys.stderr, "  relFilePath: ", options.relFilePath
-        print >>sys.stderr, "  catalogName: ", options.catalogName
-        print >>sys.stderr, "  catalogCategory: ", options.catalogCategory
-        print >>sys.stderr, "  ftpServer: ", options.ftpServer
-        print >>sys.stderr, "  ftpUser: ", options.ftpUser
-        print >>sys.stderr, "  ftpPassword: ", options.ftpPassword
-        print >>sys.stderr, "  ftpDir: ", options.ftpDir
-        print >>sys.stderr, "  tempDir ", options.tempDir
+        print("Options:", file=sys.stderr)
+        print("  debug? ", options.debug, file=sys.stderr)
+        print("  unixTime: ", options.unixTime, file=sys.stderr)
+        print("  fullPath: ", options.fullPath, file=sys.stderr)
+        print("  fileName: ", options.fileName, file=sys.stderr)
+        print("  relFilePath: ", options.relFilePath, file=sys.stderr)
+        print("  catalogName: ", options.catalogName, file=sys.stderr)
+        print("  catalogCategory: ", options.catalogCategory, file=sys.stderr)
+        print("  ftpServer: ", options.ftpServer, file=sys.stderr)
+        print("  ftpUser: ", options.ftpUser, file=sys.stderr)
+        print("  ftpPassword: ", options.ftpPassword, file=sys.stderr)
+        print("  ftpDir: ", options.ftpDir, file=sys.stderr)
+        print("  tempDir ", options.tempDir, file=sys.stderr)
 
 ########################################################################
 # Run a command in a shell, wait for it to complete
@@ -361,17 +362,17 @@ def parseArgs():
 def runCommand(cmd):
 
     if (options.debug):
-        print >>sys.stderr, "running cmd:",cmd
+        print("running cmd:",cmd, file=sys.stderr)
     
     try:
         retcode = subprocess.call(cmd, shell=True)
         if retcode < 0:
-            print >>sys.stderr, "Child was terminated by signal: ", -retcode
+            print("Child was terminated by signal: ", -retcode, file=sys.stderr)
         else:
             if (options.debug):
-                print >>sys.stderr, "Child returned code: ", retcode
-    except OSError, e:
-        print >>sys.stderr, "Execution failed:", e
+                print("Child returned code: ", retcode, file=sys.stderr)
+    except OSError as e:
+        print("Execution failed:", e, file=sys.stderr)
 
 ########################################################################
 # kick off main method

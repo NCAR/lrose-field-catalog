@@ -23,3 +23,7 @@ AcTrack2Symprod   manager  start_inst(no-params)     snuff_inst
 SunCal2Symprod    manager  start_inst(no-params)     snuff_inst
 Tstorms2Symprod   manager  start_inst(no-params)     snuff_inst
 #
+######################################################################
+# Catalog images
+LdataMultWatcher  catalog.dow           start_inst(catalog) snuff_inst
+LdataWatcher      catalog.dow_images    start_inst(catalog) snuff_inst
