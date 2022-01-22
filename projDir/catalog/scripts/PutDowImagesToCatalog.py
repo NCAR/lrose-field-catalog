@@ -332,7 +332,7 @@ def parseArgs():
 
     parser.add_option('--ftp_dir',
                       dest='ftpDir',
-                      default='/pub/incoming/catalog/relampago',
+                      default='/pub/incoming/catalog/wintre-mix',
                       help='Target directory on the FTP server')
 
     parser.add_option('--temp_dir',
