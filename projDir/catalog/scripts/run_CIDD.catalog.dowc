@@ -34,7 +34,7 @@ setenv MISSING_DATA_COLOR gray20
 setenv RANGE_RING_FLAG 1
 setenv SHOW_HEIGHT_SEL 0
 setenv TIME_INTERVAL 1.0
-setenv IMAGE_DIR /scr/snow1/rsfdata/projects/wintre_mix/images/dow
+setenv IMAGE_DIR /tmp/snow1/rsfdata/projects/wintre_mix/images/catalog/dow
 setenv OUTPUT_GEO_XML 0
 setenv HORIZ_DEFAULT_HEIGHT 900
 setenv COLOR_SCALE_WIDTH 40
@@ -55,7 +55,7 @@ CIDD -font fixed -p CIDD.catalog.dowc -i -v 2 ${RADAR_NAME}.web.normal $time_str
 
 # use CIDD to create transparent images
 
-setenv CIDD_LABEL relampago-image-generation
+setenv CIDD_LABEL wintre-mix-image-generation
 setenv CREATING_IMAGES 1
 setenv TRANSPARENT_IMAGES 1
 setenv IS_TRANS -TRANS
@@ -66,8 +66,7 @@ setenv MISSING_DATA_COLOR gray20
 setenv RANGE_RING_FLAG 0
 setenv SHOW_HEIGHT_SEL 0
 setenv TIME_INTERVAL 1.0
-setenv IMAGE_DIR ${DATA_DIR}/relampago/images/catalog/dow
-#setenv IMAGE_DIR /tmp/relampago/images/catalog/dow
+setenv IMAGE_DIR /tmp/snow1/rsfdata/projects/wintre_mix/images/catalog/dow
 setenv OUTPUT_GEO_XML 1
 setenv HORIZ_DEFAULT_HEIGHT 900
 setenv COLOR_SCALE_WIDTH 0

@@ -307,7 +307,7 @@ def parseArgs():
 
     parser.add_option('--catalog_name',
                       dest='catalogName',
-                      default='relampago',
+                      default='wintre-mix',
                       help='Catalog name - i.e. project name')
 
     parser.add_option('--catalog_category',
