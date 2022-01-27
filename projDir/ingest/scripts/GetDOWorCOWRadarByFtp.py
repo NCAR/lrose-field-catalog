@@ -173,10 +173,6 @@ def main():
     
     ftp.quit()
 
-    if (count == 0):
-        print("---->> No files to download")
-
-        
     print("===============================================================")
     print("END: " + thisScriptName + str(datetime.datetime.now()))
     print("===============================================================")
@@ -210,11 +206,13 @@ def downloadFile(ftp, dateStr, fileName):
     fileDateTimeStr = dateStr + fileTimeStr
     
     relPath = os.path.join(dateStr, fileName)
-    cmd = "LdataWriter -dir " + options.targetDir \
+    cmd = "/home/rsfdata/lrose/bin/LdataWriter -dir " + options.targetDir \
           + " -rpath " + relPath \
           + " -ltime " + fileDateTimeStr \
           + " -writer " + thisScriptName \
           + " -dtype mdv"
+    if (options.verbose):
+        print("LdataWriter cmd: ", cmd, file=sys.stderr)
     runCommand(cmd)
 
 ########################################################################
