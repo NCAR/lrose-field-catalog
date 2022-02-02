@@ -200,6 +200,14 @@ def downloadFile(ftp, dateStr, fileName):
     cmd = "mv " + tmpPath + " ."
     runCommand(cmd)
 
+    # run RadxConvert for cow to add lat/lon/alt
+
+    if (options.radar == 'cow1'):
+        cmd = "RadxConvert -lat 44.6532888889 -lon -73.4586530556 -alt 61.0000006854534 -f " + fileName + " -outdir " + options.targetDir + "/" + dateStr + " -outname " + fileName
+        if (options.verbose):
+            print("RadxConvert cmd: ", cmd, file=sys.stderr)
+    runCommand(cmd)
+
     # write latest_data_info
     
     fileTimeStr = fileName[15:21]
