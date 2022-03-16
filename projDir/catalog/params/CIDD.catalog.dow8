@@ -77,10 +77,8 @@ field_list = {
 #----------------------------------------------------------------------------------------------------------
 #
 
-DOWC-DBZ   DBZ$(IS_TRANS)   mdvp:://localhost:0:perils/cfradial/dowc&DBZHC_F dbz.colors dBZ -5 80 5 radial 1 1
-DOWC-VEL   VEL$(IS_TRANS)   mdvp:://localhost:0:perils/cfradial/dowc&VEL_F   vel.colors m/s -5 80 5 radial 1 1
-DOWC-ZDR   ZDR$(IS_TRANS)   mdvp:://localhost:0:perils/cfradial/dowc&ZDR_F   zdr.colors dB  -5 80 5 radial 1 1
-DOWC-RHOHV RHOHV$(IS_TRANS) mdvp:://localhost:0:perils/cfradial/dowc&RHOHV_F rhohv.colors -  -5 80 5 radial 1 1
+DOW6-DBZ   DBZ$(IS_TRANS)    mdvp:://localhost:0:perils/cfradial/dow8&DBZHC  dbz.colors    dBZ -5 80 5 radial 1 1
+DOW6-VEL   VEL$(IS_TRANS)    mdvp:://localhost:0:perils/cfradial/dow8&VEL    vel.colors    m/s -5 80 5 radial 1 1
 
 </GRIDS>
 
@@ -894,10 +892,10 @@ cidd.horiz_image_dir:   $(DATA_DIR)/images/cidd/dc3
 # The default file name until reset by the user - Appends other info automatically
 cidd.horiz_image_fname:   CH
 # Note that this is initially set to cidd.image_convert_script
-cidd.horiz_image_command:  convert_image.csh
+#cidd.horiz_image_command:  convert_image.csh
 #
 # Note that this is initially set to cidd.image_dir
-cidd.vert_image_dir:   $(DATA_DIR)/images/cidd/dc3/vert
+#cidd.vert_image_dir:   $(DATA_DIR)/images/cidd/dc3/vert
 # The default file name until reset by the user - Appends other info automatically
 cidd.vert_image_fname:    CV
 # Note that this is initially set to cidd.image_convert_script

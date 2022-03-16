@@ -200,14 +200,6 @@ def downloadFile(ftp, dateStr, fileName):
     cmd = "mv " + tmpPath + " ."
     runCommand(cmd)
 
-    # run RadxConvert for cow to add lat/lon/alt
-
-    if (options.radar == 'cow1'):
-        cmd = "RadxConvert -lat 45.47816 -lon -72.93604 -alt 61.0000006854534 -f " + fileName + " -outdir " + options.targetDir + "/" + dateStr + " -outname " + fileName
-        if (options.verbose):
-            print("RadxConvert cmd: ", cmd, file=sys.stderr)
-    runCommand(cmd)
-
     # write latest_data_info
     
     fileTimeStr = fileName[15:21]
@@ -268,11 +260,11 @@ def parseArgs():
                       help='Path of source directory')
     parser.add_option('--targetDir',
                       dest='targetDir',
-                      default='/scr/snow1/rsfdata/projects/wintre_mix/cfradial',
+                      default='/scr/snow1/rsfdata/projects/perils/cfradial',
                       help='Path of target directory')
     parser.add_option('--tmpDir',
                       dest='tmpDir',
-                      default='/scr/snow1/rsfdata/projects/wintre_mix/cfradial/incoming',
+                      default='/scr/snow1/rsfdata/projects/perils/cfradial/incoming',
                       help='Path of tmp directory')
     parser.add_option('--pastSecs',
                       dest='pastSecs',
@@ -281,7 +273,7 @@ def parseArgs():
     parser.add_option('--radar',
                       dest='radar',
                       default='dow6',
-                      help='Which radar dow6, dow7, cow1')
+                      help='Which radar dow6, dow7, dow8, cow1')
 
     (options, args) = parser.parse_args()
 

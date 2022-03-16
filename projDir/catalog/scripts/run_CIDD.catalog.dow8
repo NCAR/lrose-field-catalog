@@ -15,9 +15,9 @@ start_Xvfb
 set display_num = 1000
 setenv DISPLAY :${display_num}.0
 
-setenv RADAR_NAME DOWC
-setenv PLATFORM_NAME DOWC
-setenv radar_name dowc
+setenv RADAR_NAME DOW8
+setenv PLATFORM_NAME DOW8
+setenv radar_name dow8
 setenv CATEGORY radar
 setenv NUM_MENU_BAR_CELLS 1
 
@@ -51,4 +51,5 @@ setenv MINY $FLAT_MINY
 setenv MAXY $FLAT_MAXX
 
 cd $PROJ_DIR/catalog/params
-CIDD -font fixed -p CIDD.catalog.dowc -i -v 2 ${RADAR_NAME}.web.normal $time_string
+CIDD -font fixed -p CIDD.catalog.dow8 -v 2 -i ${RADAR_NAME}.web.normal $time_string
+
