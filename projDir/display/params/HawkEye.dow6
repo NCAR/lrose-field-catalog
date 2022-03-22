@@ -214,7 +214,7 @@ archive_time_span_secs = 3600;
 // Type: string
 //
 
-archive_data_url = "/scr/snow1/rsfdata/projects/wintre_mix/cfradial/dow6/";
+archive_data_url = "/scr/snow1/rsfdata/projects/perils/cfradial/dow6/";
 
 //======================================================================
 //
