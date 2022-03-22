@@ -5,7 +5,17 @@
 
 # PROJECT
 
-setenv PROJECT_NAME               "WINTRE-MIX"
-setenv project                    "wintre-mix"
-setenv catalog_name               "wintre-mix"
+#setenv PROJECT_NAME               "WINTRE-MIX"
+#setenv project                    "wintre-mix"
+#setenv catalog_name               "wintre-mix"
+#############################################
+# project-specific parameters for PERiLS
+# March 2022
+#############################################
+
+# PROJECT
+
+setenv PROJECT_NAME               "PERILS"
+setenv project                    "perils"
+setenv catalog_name               "perils"
 
