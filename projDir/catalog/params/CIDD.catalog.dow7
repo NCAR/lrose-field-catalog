@@ -77,10 +77,8 @@ field_list = {
 #----------------------------------------------------------------------------------------------------------
 #
 
-DOW7-DBZ_PPI_2_deg_elev  DBZ$(IS_TRANS) mdvp:://localhost:0:wintre_mix/cfradial/dow7&DBZHC dbz.colors dBZ -5 80 5 radial 1 1
-DOW7-VEL_PPI_2_deg_elev VEL$(IS_TRANS) mdvp:://localhost:0:wintre_mix/cfradial/dow7&VEL vel.colors m/s -5 80 5 radial 1 1
-DOW7-ZDR_PPI_2_deg_elev ZDR$(IS_TRANS) mdvp:://localhost:0:wintre_mix/cfradial/dow7&ZDR zdr.colors dB  -5 80 5 radial 1 1
-DOW7-RHOHV_PPI_2_deg_elev RHOHV$(IS_TRANS) mdvp:://localhost:0:wintre_mix/cfradial/dow7&RHOHV rhohv.colors -  -5 80 5 radial 1 1
+DOW7-DBZ  DBZ$(IS_TRANS) mdvp:://localhost:0:perils/cfradial/dow7&DBZHC dbz.colors dBZ -5 80 5 radial 1 1
+DOW7-VEL VEL$(IS_TRANS) mdvp:://localhost:0:perils/cfradial/dow7&VEL vel.colors m/s -5 80 5 radial 1 1
 
 </GRIDS>
 
