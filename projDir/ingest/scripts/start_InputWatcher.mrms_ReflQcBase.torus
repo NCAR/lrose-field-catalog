@@ -1,0 +1,13 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+setenv project torus
+
+running "InputWatcher -params InputWatcher.mrms_ReflQcBase"
+
+if ($status == 1) then
+    InputWatcher -params InputWatcher.mrms_ReflQcBase -debug |& \
+	LogFilter -d $ERRORS_LOG_DIR -p InputWatcher -i mrms_ReflQcBase >& /dev/null &
+endif
+

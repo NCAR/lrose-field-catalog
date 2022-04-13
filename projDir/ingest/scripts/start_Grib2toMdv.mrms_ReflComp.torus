@@ -1,0 +1,13 @@
+#! /bin/csh
+
+cd $PROJ_DIR/ingest/params
+
+setenv project torus
+
+running "Grib2toMdv -params Grib2toMdv.mrms_ReflComp"
+
+if ($status == 1) then
+    Grib2toMdv -params Grib2toMdv.mrms_ReflComp -debug |& \
+	LogFilter -d $ERRORS_LOG_DIR -p Grib2toMdv -i mrms_ReflComp >& /dev/null &
+endif
+
