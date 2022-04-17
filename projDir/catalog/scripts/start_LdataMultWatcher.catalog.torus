@@ -1,0 +1,13 @@
+#! /bin/csh
+
+cd $PROJ_DIR/catalog/params
+
+setenv project torus
+
+running "LdataMultWatcher -params LdataMultWatcher.catalog.torus"
+
+if ($status == 1) then
+    LdataMultWatcher -params LdataMultWatcher.catalog.torus -debug |& \
+	LogFilter -d $ERRORS_LOG_DIR -p LdataMultWatcher -i catalog.torus >& /dev/null &
+endif
+

@@ -65,7 +65,7 @@ procmap_register_interval = 60;
 // Type: string
 //
 
-inputPath = "$(DATA_DIR)/torus/raw/images";
+inputPath = "$(DATA_DIR)/$(project)/raw/images";
 
 ///////////// use_url /////////////////////////////////
 //
@@ -390,7 +390,7 @@ script_min_interval_secs = 0;
 
 supplementary_args = {
   "--ftp_server", "catalog.eol.ucar.edu",
-  "--target_dir", "pub/incoming/catalog/torus",
+  "--target_dir", "pub/incoming/catalog/$(project)",
   "--move_after_copy",
   "--debug"
 };

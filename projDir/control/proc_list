@@ -42,6 +42,6 @@ Grib2toMdv   mrms_ReflQcBase  start_Grib2toMdv.mrms_ReflQcBase.torus    snuff_in
 Grib2toMdv   mrms_ReflBase    start_Grib2toMdv.mrms_ReflBase.torus      snuff_inst
 Grib2toMdv   mrms_MESH        start_Grib2toMdv.mrms_MESH.torus          snuff_inst
 #
-#LdataMultWatcher  catalog.torus         start_inst(catalog) snuff_inst
-#LdataWatcher      catalog.images_torus  start_inst(catalog) snuff_inst
+LdataMultWatcher  catalog.torus        start_LdataMultWatcher.catalog.torus    snuff_inst
+LdataWatcher      catalog.images_torus start_LdataWatcher.catalog.images_torus snuff_inst
 ######################################################################

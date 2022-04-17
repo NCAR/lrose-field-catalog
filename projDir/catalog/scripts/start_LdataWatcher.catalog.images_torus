@@ -1,0 +1,13 @@
+#! /bin/csh
+
+cd $PROJ_DIR/catalog/params
+
+setenv project torus
+
+running "LdataWatcher -params LdataWatcher.catalog.images_torus"
+
+if ($status == 1) then
+    LdataWatcher -params LdataWatcher.catalog.images_torus -debug |& \
+	LogFilter -d $ERRORS_LOG_DIR -p LdataWatcher -i catalog.images_torus >& /dev/null &
+endif
+
