@@ -97,7 +97,7 @@ field_list = {
 # Front Range
 #
 
-MergedReflectivityComposite MergedReflectivityComposite$(IS_TRANS) mdvp:://front.eol.ucar.edu:8080:$(project)/mdv/mrms/ReflComp?use_http=true&CREF_GPML  dbz.colors   dBZ -5 80 5 dcont,comp 1 0
+MergedReflectivityComposite MergedReflectivityComposite$(IS_TRANS) mdvp:://localhost:0:$(DATA_DIR)/$(project)/mdv/mrms/ReflComp?use_http=true&CREF_GPML  dbz.colors   dBZ -5 80 5 dcont,comp 1 0
 
 </GRIDS>
 
@@ -392,8 +392,8 @@ cidd.lambert_lat1: 20.0
 cidd.lambert_lat2: 60.0 
 
 # These must be set when using a STEREOGRAPHIC (Polar stereo or Oblique stereo)
-cidd.tangent_lat: $(RADAR_LAT)
-cidd.tangent_lon: $(RADAR_LON)
+cidd.tangent_lat: $(ORIGIN_LAT)
+cidd.tangent_lon: $(ORIGIN_LON)
 
 
 # Set this to the amount grids are rotated clockwise to true north.
