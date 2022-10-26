@@ -77,8 +77,8 @@ field_list = {
 #----------------------------------------------------------------------------------------------------------
 #
 
-DOW7-DBZ  DBZ$(IS_TRANS) mdvp:://localhost:0:perils/cfradial/dow7&DBZHC dbz.colors dBZ -5 80 5 radial 1 1
-DOW7-VEL VEL$(IS_TRANS) mdvp:://localhost:0:perils/cfradial/dow7&VEL vel.colors m/s -5 80 5 radial 1 1
+DOW7-DBZ  DBZ$(IS_TRANS) mdvp:://localhost:0:lee/cfradial/dow7&DBZHC dbz.colors dBZ -5 80 5 radial 1 1
+DOW7-VEL VEL$(IS_TRANS) mdvp:://localhost:0:lee/cfradial/dow7&VEL vel.colors m/s -5 80 5 radial 1 1
 
 </GRIDS>
 

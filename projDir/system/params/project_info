@@ -15,7 +15,17 @@
 
 # PROJECT
 
-setenv PROJECT_NAME               "PERILS"
-setenv project                    "perils"
-setenv catalog_name               "perils"
+#setenv PROJECT_NAME               "PERILS"
+#setenv project                    "perils"
+#setenv catalog_name               "perils"
+#############################################
+# project-specific parameters for LEE
+# October 2022
+#############################################
+
+# PROJECT
+
+setenv PROJECT_NAME               "LEE"
+setenv project                    "lee"
+setenv catalog_name               "lee"
 
