@@ -17,4 +17,4 @@
 ###################### Pull DOW cfradial for catalog #########################
 #*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar dow8 1> /dev/null 2> /dev/null
 #*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar dowc 1> /dev/null 2> /dev/null
-#*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar dow7 1> /dev/null 2> /dev/null
+*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar DOW7 1> /dev/null 2> /dev/null
