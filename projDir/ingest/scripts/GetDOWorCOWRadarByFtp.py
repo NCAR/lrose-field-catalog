@@ -244,15 +244,15 @@ def parseArgs():
                       help='Skip ftp access for debugging')
     parser.add_option('--ftpServer',
                       dest='ftpServer',
-                      default='codewx.io',
+                      default='svr.guru',
                       help='Name of ftp server host')
     parser.add_option('--ftpUser',
                       dest='ftpUser',
-                      default='ncar-barn@codewx.io',
+                      default='ncar@svr.guru',
                       help='User for ftp host')
     parser.add_option('--ftpPasswd',
                       dest='ftpPasswd',
-                      default='Mix3dPh4se',
+                      default='FARMaccess20221024',
                       help='Passwd for ftp host')
     parser.add_option('--sourceDir',
                       dest='sourceDir',
@@ -272,7 +272,7 @@ def parseArgs():
                       help='How far back to retrieve (secs)')
     parser.add_option('--radar',
                       dest='radar',
-                      default='dow6',
+                      default='dow7',
                       help='Which radar dow6, dow7, dow8, cow1')
 
     (options, args) = parser.parse_args()
