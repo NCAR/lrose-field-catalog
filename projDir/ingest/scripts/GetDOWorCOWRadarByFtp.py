@@ -256,7 +256,7 @@ def parseArgs():
                       help='Passwd for ftp host')
     parser.add_option('--sourceDir',
                       dest='sourceDir',
-                      default='/data',
+                      default='/',
                       help='Path of source directory')
     parser.add_option('--targetDir',
                       dest='targetDir',
@@ -272,7 +272,7 @@ def parseArgs():
                       help='How far back to retrieve (secs)')
     parser.add_option('--radar',
                       dest='radar',
-                      default='dow7',
+                      default='DOW7',
                       help='Which radar dow6, dow7, dow8, cow1')
 
     (options, args) = parser.parse_args()
