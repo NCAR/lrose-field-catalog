@@ -30,18 +30,18 @@ LdataWatcher      catalog.dow_images    start_inst(catalog) snuff_inst
 ######################################################################
 # MRMS for TORUS
 #
-InputWatcher mrms_ReflQcComp  start_InputWatcher.mrms_ReflQcComp.torus  snuff_inst
-InputWatcher mrms_ReflComp    start_InputWatcher.mrms_ReflComp.torus    snuff_inst
-InputWatcher mrms_ReflQcBase  start_InputWatcher.mrms_ReflQcBase.torus  snuff_inst
-InputWatcher mrms_ReflBase    start_InputWatcher.mrms_ReflBase.torus    snuff_inst
-InputWatcher mrms_MESH        start_InputWatcher.mrms_MESH.torus        snuff_inst
+#InputWatcher mrms_ReflQcComp  start_InputWatcher.mrms_ReflQcComp.torus  snuff_inst
+#InputWatcher mrms_ReflComp    start_InputWatcher.mrms_ReflComp.torus    snuff_inst
+#InputWatcher mrms_ReflQcBase  start_InputWatcher.mrms_ReflQcBase.torus  snuff_inst
+#InputWatcher mrms_ReflBase    start_InputWatcher.mrms_ReflBase.torus    snuff_inst
+#InputWatcher mrms_MESH        start_InputWatcher.mrms_MESH.torus        snuff_inst
 #
-Grib2toMdv   mrms_ReflQcComp  start_Grib2toMdv.mrms_ReflQcComp.torus    snuff_inst
-Grib2toMdv   mrms_ReflComp    start_Grib2toMdv.mrms_ReflComp.torus      snuff_inst
-Grib2toMdv   mrms_ReflQcBase  start_Grib2toMdv.mrms_ReflQcBase.torus    snuff_inst
-Grib2toMdv   mrms_ReflBase    start_Grib2toMdv.mrms_ReflBase.torus      snuff_inst
-Grib2toMdv   mrms_MESH        start_Grib2toMdv.mrms_MESH.torus          snuff_inst
+#Grib2toMdv   mrms_ReflQcComp  start_Grib2toMdv.mrms_ReflQcComp.torus    snuff_inst
+#Grib2toMdv   mrms_ReflComp    start_Grib2toMdv.mrms_ReflComp.torus      snuff_inst
+#Grib2toMdv   mrms_ReflQcBase  start_Grib2toMdv.mrms_ReflQcBase.torus    snuff_inst
+#Grib2toMdv   mrms_ReflBase    start_Grib2toMdv.mrms_ReflBase.torus      snuff_inst
+#Grib2toMdv   mrms_MESH        start_Grib2toMdv.mrms_MESH.torus          snuff_inst
 #
-LdataMultWatcher  catalog.torus        start_LdataMultWatcher.catalog.torus    snuff_inst
-LdataWatcher      catalog.images_torus start_LdataWatcher.catalog.images_torus snuff_inst
+#LdataMultWatcher  catalog.torus        start_LdataMultWatcher.catalog.torus    snuff_inst
+#LdataWatcher      catalog.images_torus start_LdataWatcher.catalog.images_torus snuff_inst
 ######################################################################

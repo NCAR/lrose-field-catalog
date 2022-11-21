@@ -139,7 +139,7 @@ data_sets = {
     call_late_data_script = FALSE,
     late_data_script_name = "test_script",
     late_data_secs = 3600000,
-    trailing_args = "--radar_name,dow7,--min_fixed_angle,0.25,--max_fixed_angle,3.5,--max_range_km,130.0"
+    trailing_args = "--radar_name,dow7,--min_fixed_angle,0.25,--max_fixed_angle,3.5,--max_range_km,130.0,--verbose"
   }
 };
 

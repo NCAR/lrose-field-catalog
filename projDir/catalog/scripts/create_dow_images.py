@@ -46,8 +46,9 @@ def main():
     # Check the fixed anlgle.  We only process files between the sepcified fixed angles
     # to make sure we don't process the vertical scans
 
-    if (fixed_angle < options.min_fixed_angle) or (fixed_angle > options.max_fixed_angle):
-        print('**** Skipping scan with fixed angle outside of the specified range')
+    #if (fixed_angle < options.min_fixed_angle) or (fixed_angle > options.max_fixed_angle):
+    if (fixed_angle < options.min_fixed_angle) or (fixed_angle > options.max_fixed_angle) or ("RHI" in fullFilePath):
+        print('**** Skipping scan with fixed angle outside of the specified range or RHI')
         return
 
     # Now get the radar x/y location assuming a Mercator projection with origin
@@ -81,6 +82,7 @@ def main():
     # create the images
     
     cmd = 'run_CIDD.catalog.' + options.radar_name + ' ' + validTimeStr
+    print(cmd)
     runCommand(cmd);
 
     print("=============================================================")
