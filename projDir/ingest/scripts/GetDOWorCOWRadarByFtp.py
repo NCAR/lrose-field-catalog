@@ -165,7 +165,7 @@ def main():
             count = 0
             fileDate = ftpFileName[6:14]
 
-            if (ftpFileName not in localFileList and ftpFileName[0:5] == 'cfrad' and fileDate == dateStr):
+            if (ftpFileName not in localFileList and ftpFileName[0:5] == 'cfrad' and fileDate == dateStr and "SUR" in ftpFileName):
                 downloadFile(ftp, dateStr, ftpFileName)
                 count = count + 1
                     
