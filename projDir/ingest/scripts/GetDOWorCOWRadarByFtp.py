@@ -260,11 +260,11 @@ def parseArgs():
                       help='Path of source directory')
     parser.add_option('--targetDir',
                       dest='targetDir',
-                      default='/scr/snow1/rsfdata/projects/lee/cfradial',
+                      default='/scr/snow1/rsfdata/projects/perils/cfradial',
                       help='Path of target directory')
     parser.add_option('--tmpDir',
                       dest='tmpDir',
-                      default='/scr/snow1/rsfdata/projects/lee/cfradial/incoming',
+                      default='/scr/snow1/rsfdata/projects/perils/cfradial/incoming',
                       help='Path of tmp directory')
     parser.add_option('--pastSecs',
                       dest='pastSecs',

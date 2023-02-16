@@ -77,10 +77,10 @@ field_list = {
 #----------------------------------------------------------------------------------------------------------
 #
 
-DOWC-DBZ   DBZ$(IS_TRANS)   mdvp:://localhost:0:perils/cfradial/dowc&DBZHC_F dbz.colors dBZ -5 80 5 radial 1 1
-DOWC-VEL   VEL$(IS_TRANS)   mdvp:://localhost:0:perils/cfradial/dowc&VEL_F   vel.colors m/s -5 80 5 radial 1 1
-DOWC-ZDR   ZDR$(IS_TRANS)   mdvp:://localhost:0:perils/cfradial/dowc&ZDR_F   zdr.colors dB  -5 80 5 radial 1 1
-DOWC-RHOHV RHOHV$(IS_TRANS) mdvp:://localhost:0:perils/cfradial/dowc&RHOHV_F rhohv.colors -  -5 80 5 radial 1 1
+DOWC-DBZ   DBZ$(IS_TRANS)   mdvp:://localhost:0:perils/cfradial/COW1&DBZHC_F dbz.colors dBZ -5 80 5 radial 1 1
+DOWC-VEL   VEL$(IS_TRANS)   mdvp:://localhost:0:perils/cfradial/COW1&VEL_F   vel.colors m/s -5 80 5 radial 1 1
+DOWC-ZDR   ZDR$(IS_TRANS)   mdvp:://localhost:0:perils/cfradial/COW1&ZDR_F   zdr.colors dB  -5 80 5 radial 1 1
+DOWC-RHOHV RHOHV$(IS_TRANS) mdvp:://localhost:0:perils/cfradial/COW1&RHOHV_F rhohv.colors -  -5 80 5 radial 1 1
 
 </GRIDS>
 

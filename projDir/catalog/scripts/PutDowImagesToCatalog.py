@@ -307,7 +307,7 @@ def parseArgs():
 
     parser.add_option('--catalog_name',
                       dest='catalogName',
-                      default='lee',
+                      default='perils',
                       help='Catalog name - i.e. project name')
 
     parser.add_option('--catalog_category',
@@ -332,7 +332,7 @@ def parseArgs():
 
     parser.add_option('--ftp_dir',
                       dest='ftpDir',
-                      default='/pub/incoming/catalog/lee',
+                      default='/pub/incoming/catalog/perils',
                       help='Target directory on the FTP server')
 
     parser.add_option('--temp_dir',
