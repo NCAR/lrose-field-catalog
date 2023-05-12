@@ -15,7 +15,7 @@
 30 */1 * * * csh -c run_rsync_snow_to_secondary 1> /dev/null 2> /dev/null
 #
 ###################### Pull DOW cfradial for catalog #########################
-*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar DOW8 1> /dev/null 2> /dev/null
-*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar COW1 1> /dev/null 2> /dev/null
-*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar DOW7 1> /dev/null 2> /dev/null
-*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar DOW6 1> /dev/null 2> /dev/null
+#*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar DOW8 1> /dev/null 2> /dev/null
+#*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar COW1 1> /dev/null 2> /dev/null
+#*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar DOW7 1> /dev/null 2> /dev/null
+#*/5 * * * * /home/rsfdata/git/lrose-field-catalog/projDir/ingest/scripts/GetDOWorCOWRadarByFtp.py --radar DOW6 1> /dev/null 2> /dev/null
