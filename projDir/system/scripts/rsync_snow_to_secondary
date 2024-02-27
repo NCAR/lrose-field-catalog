@@ -4,7 +4,6 @@
 cd /export/snow2/rsfdata/projects
 
 foreach project ( \
-    socrates \
     cset \
     noreaster \
     aristo-17 \
